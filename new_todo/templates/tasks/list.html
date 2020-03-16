@@ -1,0 +1,44 @@
+{% extends "tasks/base.html" %}
+
+{% block content %}
+	<h2>ToDo List</h2>
+	<div class="field">
+		<form method="POST" class="form-inline ml-4 mb-2">
+			{% csrf_token %}
+			<div class="form-group">
+				{{form.title}}
+			</div>
+			<input type="submit" name="create task" class="btn btn-primary ml-2">
+		</form>
+	</div>
+	
+	<div class="">
+		
+		{% for task in tasks %}
+				{% if task.complete == True %}
+					<ul>
+						<li >
+							<a href="{% url 'delete' task.id %}"><span><i class="fas fa-trash"></i></span></a>
+							<a href="{% url 'update_task' task.id %}"><span style="background: blue"><i class="fas fa-pen-alt"></i></span></i></a>
+							<strike>{{ task }}</strike>
+							<!-- <a href="{% url 'update_task' task.id %}">Update</a> -->
+							<!-- <a href="{% url 'delete' task.id %}"><button>Delete</button></a>    -->
+						</li>
+						
+					</ul>
+				{% else %}
+					<ul>
+						<li>
+							<a href="{% url 'delete' task.id %}"><span><i class="fas fa-trash"></i></span></a>
+							<a href="{% url 'update_task' task.id %}"><span><i style="background: blue" class="fas fa-pen-alt"></i></span></i></a>
+							{{ task }}
+							<!-- <a href="{% url 'update_task' task.id %}">Update</a> -->
+							
+							<!-- <a href="{% url 'delete' task.id %}"><button>Delete</button></a> -->
+						</li>
+					</ul>
+				{% endif %}
+		{% endfor %}
+	</div>
+
+{% endblock content %}
