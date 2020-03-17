@@ -32,7 +32,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'list',
     'new_todo',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -81,7 +80,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'todo_list',
         'USER': 'postgres',
-        'PASSWORD': 'dksn@2000',
+        'PASSWORD': '12345',
         'HOST': 'localhost',
     }
 }
